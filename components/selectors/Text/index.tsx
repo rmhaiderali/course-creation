@@ -4,6 +4,24 @@ import ContentEditable from "react-contenteditable";
 
 import { TextSettings } from "./TextSettings";
 
+// https://stackoverflow.com/questions/6906108/in-javascript-how-can-i-dynamically-get-a-nested-property-of-an-object
+function setPropByString(obj, propString, value) {
+  var prop,
+    props = propString.split(".");
+
+  for (var i = 0, iLen = props.length - 1; i < iLen; i++) {
+    prop = props[i];
+
+    var candidate = obj[prop];
+    if (candidate !== undefined) {
+      obj = candidate;
+    } else {
+      break;
+    }
+  }
+  obj[props[i]] = value;
+}
+
 export type TextProps = {
   fontSize: string;
   textAlign: string;
@@ -12,6 +30,7 @@ export type TextProps = {
   shadow: number;
   text: string;
   margin: [string, string, string, string];
+  setme: string | string[];
 };
 
 export const Text = ({
@@ -22,6 +41,7 @@ export const Text = ({
   shadow,
   text,
   margin,
+  setme = "text",
 }: Partial<TextProps>) => {
   const {
     connectors: { connect },
@@ -36,7 +56,10 @@ export const Text = ({
       html={text} // innerHTML of the editable div
       disabled={!enabled}
       onChange={(e) => {
-        setProp((prop) => (prop.text = e.target.value), 500);
+        setProp((prop) => {
+          if (!Array.isArray(setme)) prop.text = e.target.value;
+          else setPropByString(prop, setme.join("."), e.target.value);
+        }, 500);
       }} // use true to disable editing
       tagName="h2" // Use a custom HTML tag (uses a div by default)
       style={{
@@ -47,6 +70,7 @@ export const Text = ({
         textShadow: `0px 0px 2px rgba(0,0,0,${(shadow || 0) / 100})`,
         fontWeight,
         textAlign,
+        outline: "none",
       }}
     />
   );

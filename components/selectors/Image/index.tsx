@@ -49,6 +49,7 @@ export const Image = (props: any) => {
         onDrop={async (e) => {
           e.preventDefault();
           if (!enabled || imageUrl !== "/placeholder/image.png") return;
+          if (!e.dataTransfer?.files?.[0]) return;
 
           console.log(e.dataTransfer.files[0], e);
           const data = await readFile(e.dataTransfer.files[0]);

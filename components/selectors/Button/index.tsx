@@ -57,7 +57,7 @@ export const Button: UserComponent<ButtonProps> = (props: any) => {
 Button.craft = {
   displayName: "Button",
   props: {
-    background: { r: 255, g: 255, b: 255, a: 0.5 },
+    background: { r: 169, g: 230, b: 255, a: 1 },
     color: { r: 92, g: 90, b: 90, a: 1 },
     buttonStyle: "full",
     text: "Button",
