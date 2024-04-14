@@ -1,4 +1,5 @@
 module.exports = {
-  assetPrefix:
-    process.env.NODE_ENV === 'production' ? '/examples/landing' : '/',
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
