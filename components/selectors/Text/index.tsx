@@ -31,6 +31,9 @@ export type TextProps = {
   text: string;
   margin: [string, string, string, string];
   setme: string | string[];
+  allwaysDisabled: boolean | undefined;
+  connectRef: boolean | undefined;
+  width: string;
 };
 
 export const Text = ({
@@ -42,6 +45,9 @@ export const Text = ({
   text,
   margin,
   setme = "text",
+  allwaysDisabled = false,
+  connectRef = true,
+  width = "100%",
 }: Partial<TextProps>) => {
   const {
     connectors: { connect },
@@ -52,9 +58,9 @@ export const Text = ({
   }));
   return (
     <ContentEditable
-      innerRef={connect}
+      innerRef={connectRef && connect}
       html={text} // innerHTML of the editable div
-      disabled={!enabled}
+      disabled={allwaysDisabled || !enabled}
       onChange={(e) => {
         setProp((prop) => {
           if (!Array.isArray(setme)) prop.text = e.target.value;
@@ -63,7 +69,7 @@ export const Text = ({
       }} // use true to disable editing
       tagName="h2" // Use a custom HTML tag (uses a div by default)
       style={{
-        width: "100%",
+        width: width,
         margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
         color: `rgba(${Object.values(color)})`,
         fontSize: `${fontSize}px`,
@@ -71,6 +77,8 @@ export const Text = ({
         fontWeight,
         textAlign,
         outline: "none",
+        overflowWrap: "break-word",
+        height: "auto",
       }}
     />
   );
@@ -82,7 +90,7 @@ Text.craft = {
     fontSize: "15",
     textAlign: "left",
     fontWeight: "500",
-    color: { r: 92, g: 90, b: 90, a: 1 },
+    color: { r: 30, g: 30, b: 30, a: 1 },
     margin: [0, 0, 0, 0],
     shadow: 0,
     text: "Text",

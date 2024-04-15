@@ -44,7 +44,7 @@ export const Button: UserComponent<ButtonProps> = (props: any) => {
       className={cx([
         "rounded w-full px-4 py-2",
         {
-          "shadow-lg": props.buttonStyle === "full",
+          // "shadow-lg": props.buttonStyle === "full",
         },
       ])}
       {...otherProps}
@@ -57,8 +57,8 @@ export const Button: UserComponent<ButtonProps> = (props: any) => {
 Button.craft = {
   displayName: "Button",
   props: {
-    background: { r: 169, g: 230, b: 255, a: 1 },
-    color: { r: 92, g: 90, b: 90, a: 1 },
+    background: { r: 141, g: 218, b: 255, a: 1 },
+    color: { r: 30, g: 30, b: 30, a: 1 },
     buttonStyle: "full",
     text: "Button",
     margin: ["5", "0", "5", "0"],

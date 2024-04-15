@@ -52,7 +52,7 @@ const Item = styled.a<{ disabled?: boolean }>`
 `;
 
 export const Header = () => {
-  const { enabled, canUndo, canRedo, actions, state } = useEditor(
+  const { enabled, canUndo, canRedo, actions, state, query } = useEditor(
     (state, query) => ({
       state,
       enabled: state.options.enabled,
@@ -88,13 +88,19 @@ export const Header = () => {
               },
             ])}
             onClick={() => {
-              console.log(state)
+              console.log(state);
               actions.setOptions((options) => (options.enabled = !enabled));
             }}
           >
             {enabled ? <Checkmark /> : <Customize />}
             {enabled ? "Finish Editing" : "Edit"}
           </Btn>
+          {/* <button onClick={() => console.log(query.serialize())}>
+            serialize
+          </button>
+          <button onClick={() => console.log(actions.deserialize())}>
+            deserialize
+          </button> */}
         </div>
       </div>
     </HeaderDiv>
