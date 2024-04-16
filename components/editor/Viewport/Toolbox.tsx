@@ -13,6 +13,7 @@ import { Text } from "../../selectors/Text";
 import { Video } from "../../selectors/Video";
 import { Image } from "../../selectors/Image";
 import { Poll } from "../../selectors/Poll";
+import { FroalaEditor } from "components/selectors/FroalaEditor";
 
 const ToolboxDiv = styled.div<{ enabled: boolean }>`
   transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
@@ -70,11 +71,18 @@ export const Toolbox = () => {
             </Item>
           </Tooltip>
         </div>
-        <div
+        {/* <div
           ref={(ref) =>
             create(ref, <Text fontSize="12" textAlign="left" text="Hi there" />)
           }
         >
+          <Tooltip title="Text" placement="right">
+            <Item className="m-2 pb-2 cursor-pointer block" move>
+              <TypeSvg />
+            </Item>
+          </Tooltip>
+        </div> */}
+        <div ref={(ref) => create(ref, <FroalaEditor />)}>
           <Tooltip title="Text" placement="right">
             <Item className="m-2 pb-2 cursor-pointer block" move>
               <TypeSvg />
