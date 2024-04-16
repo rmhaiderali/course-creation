@@ -1,9 +1,9 @@
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
 import cx from "classnames";
-import React from "react";
+import React, { useId } from "react";
 import styled from "styled-components";
 
-import { QuestionSettings } from "./QuestionSettings";
+import { PollSettings } from "./PollSettings";
 
 import { Text } from "../Text";
 
@@ -33,7 +33,7 @@ const StyledButton = styled.button<ButtonProps>`
   align-items: center;
 `;
 
-export const Question: UserComponent<ButtonProps> = (props: any) => {
+export const Poll: UserComponent<ButtonProps> = (props: any) => {
   const {
     connectors: { connect },
     setProp,
@@ -45,9 +45,11 @@ export const Question: UserComponent<ButtonProps> = (props: any) => {
     enabled: state.options.enabled,
   }));
 
+  const id = useId();
+
   const { text, textComponent, color, options, ...otherProps } = props;
   return (
-    <div ref={connect} style={{ overflow: "hidden", width: "100%" }}>
+    <div ref={connect} style={{ width: "100%" }}>
       <Text {...textComponent} text={text} />
       {options.map((option, index) => (
         <StyledButton
@@ -64,21 +66,29 @@ export const Question: UserComponent<ButtonProps> = (props: any) => {
         >
           <input
             type="radio"
-            style={{ marginRight: "15px", width: "20px", height: "20px" }}
-            name={text.replaceAll(" ", "")}
+            style={{
+              width: "20px",
+              height: "20px",
+              marginRight: "15px",
+              colorScheme: "light",
+              accentColor: "gray",
+            }}
+            name={id}
             value={index}
             disabled={enabled}
           />
           <Text
             {...textComponent}
+            width="calc(100% - 64px)"
             text={option}
             color={props.color}
+            textAlign="left"
             setme={["options", index]}
             connectRef={false}
           />
           {options.length > 2 && enabled && (
             <svg
-              style={{ width: "22px", height: "20px" }}
+              style={{ width: "22px", height: "20px", marginLeft: "12px" }}
               viewBox="0 0 20 20"
               onClick={() => {
                 setProp((prop) => prop.options.splice(index, 1));
@@ -91,7 +101,7 @@ export const Question: UserComponent<ButtonProps> = (props: any) => {
           )}
         </StyledButton>
       ))}
-      {options.length < 4 && enabled && (
+      {options.length < 5 && enabled && (
         <StyledButton
           className={cx([
             "rounded w-full px-4 py-2",
@@ -129,13 +139,13 @@ export const Question: UserComponent<ButtonProps> = (props: any) => {
   );
 };
 
-Question.craft = {
-  displayName: "Question",
+Poll.craft = {
+  displayName: "Poll",
   props: {
     background: { r: 141, g: 218, b: 255, a: 1 },
     color: { r: 30, g: 30, b: 30, a: 1 },
     buttonStyle: "full",
-    text: "Type Question",
+    text: "Type Poll Question Here",
     margin: ["5", "0", "5", "0"],
     textComponent: {
       ...Text.craft.props,
@@ -144,6 +154,6 @@ Question.craft = {
     options: ["Option 1", "Option 2"],
   },
   related: {
-    toolbar: QuestionSettings,
+    toolbar: PollSettings,
   },
 };

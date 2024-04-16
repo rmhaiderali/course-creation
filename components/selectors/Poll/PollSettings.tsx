@@ -3,7 +3,7 @@ import React from "react";
 import { ToolbarSection, ToolbarItem } from "../../editor";
 import { ToolbarRadio } from "../../editor/Toolbar/ToolbarRadio";
 
-export const QuestionSettings = () => {
+export const PollSettings = () => {
   return (
     <React.Fragment>
       <ToolbarSection

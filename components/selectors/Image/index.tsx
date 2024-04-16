@@ -8,7 +8,6 @@ import { ImageSettings } from "./ImageSettings";
 const Wrapper = styled.div<any>`
   width: 100%;
   height: 100%;
-  overflow: hidden;
 `;
 
 export const Image = (props: any) => {
