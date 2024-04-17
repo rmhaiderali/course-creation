@@ -4,7 +4,10 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import React from "react";
 
 import { Viewport, RenderNode } from "../components/editor";
-import { Container, Text } from "../components/selectors";
+import { Text } from "../components/selectors";
+import { Container } from "../components/selectors/Container";
+import { RowsContainer } from "../components/selectors/Container/rowsContainer";
+import { ColumnsContainer } from "../components/selectors/Container/columnsContainer";
 import { Button } from "../components/selectors/Button";
 import { Custom1, OnlyButtons } from "../components/selectors/Custom1";
 import { Custom2, Custom2VideoDrop } from "../components/selectors/Custom2";
@@ -33,6 +36,8 @@ function App() {
         <Editor
           resolver={{
             Container,
+            RowsContainer,
+            ColumnsContainer,
             Text,
             Custom1,
             Custom2,
@@ -44,7 +49,7 @@ function App() {
             Video,
             Image,
             Poll,
-            FroalaEditor
+            FroalaEditor,
           }}
           enabled={false}
           onRender={RenderNode}

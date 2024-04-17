@@ -39,7 +39,7 @@ const defaultProps = {
   height: "auto",
 };
 
-export const Container = (props: Partial<ContainerProps>) => {
+export const RowsContainer = (props: Partial<ContainerProps>) => {
   props = {
     ...defaultProps,
     ...props,
@@ -81,13 +81,13 @@ export const Container = (props: Partial<ContainerProps>) => {
   );
 };
 
-Container.craft = {
-  displayName: "Container",
+RowsContainer.craft = {
+  displayName: "Rows Container",
   props: defaultProps,
   rules: {
     canDrag: () => true,
   },
   related: {
-    toolbar: ContainerSettings(true),
+    toolbar: ContainerSettings(),
   },
 };

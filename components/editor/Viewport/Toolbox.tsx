@@ -8,8 +8,9 @@ import SquareSvg from "../../../public/icons/toolbox/rectangle.svg";
 import TypeSvg from "../../../public/icons/toolbox/text.svg";
 import YoutubeSvg from "../../../public/icons/toolbox/video-line.svg";
 import { Button } from "../../selectors/Button";
-import { Container } from "../../selectors/Container";
-import { Text } from "../../selectors/Text";
+import { RowsContainer } from "../../selectors/Container/rowsContainer";
+import { ColumnsContainer } from "../../selectors/Container/columnsContainer";
+// import { Text } from "../../selectors/Text";
 import { Video } from "../../selectors/Video";
 import { Image } from "../../selectors/Image";
 import { Poll } from "../../selectors/Poll";
@@ -56,7 +57,7 @@ export const Toolbox = () => {
               ref,
               <Element
                 canvas
-                is={Container}
+                is={ColumnsContainer}
                 background={{ r: 0, g: 0, b: 0, a: 0.1 }}
                 color={{ r: 0, g: 0, b: 0, a: 1 }}
                 height="300px"
@@ -65,7 +66,28 @@ export const Toolbox = () => {
             )
           }
         >
-          <Tooltip title="Container" placement="right">
+          <Tooltip title="Columns Container" placement="right">
+            <Item className="m-2 pb-2 cursor-pointer block" move>
+              <SquareSvg />
+            </Item>
+          </Tooltip>
+        </div>
+        <div
+          ref={(ref) =>
+            create(
+              ref,
+              <Element
+                canvas
+                is={RowsContainer}
+                background={{ r: 0, g: 0, b: 0, a: 0.1 }}
+                color={{ r: 0, g: 0, b: 0, a: 1 }}
+                height="300px"
+                width="300px"
+              ></Element>
+            )
+          }
+        >
+          <Tooltip title="Rows Container" placement="right">
             <Item className="m-2 pb-2 cursor-pointer block" move>
               <SquareSvg />
             </Item>

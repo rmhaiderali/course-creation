@@ -25,7 +25,7 @@ export type ContainerProps = {
 };
 
 const defaultProps = {
-  flexDirection: "column",
+  flexDirection: "row",
   alignItems: "flex-start",
   justifyContent: "flex-start",
   fillSpace: "no",
@@ -39,7 +39,7 @@ const defaultProps = {
   height: "auto",
 };
 
-export const Container = (props: Partial<ContainerProps>) => {
+export const ColumnsContainer = (props: Partial<ContainerProps>) => {
   props = {
     ...defaultProps,
     ...props,
@@ -81,13 +81,13 @@ export const Container = (props: Partial<ContainerProps>) => {
   );
 };
 
-Container.craft = {
-  displayName: "Container",
+ColumnsContainer.craft = {
+  displayName: "Columns Container",
   props: defaultProps,
   rules: {
     canDrag: () => true,
   },
   related: {
-    toolbar: ContainerSettings(true),
+    toolbar: ContainerSettings(),
   },
 };
