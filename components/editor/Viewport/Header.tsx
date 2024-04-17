@@ -95,12 +95,24 @@ export const Header = () => {
             {enabled ? <Checkmark /> : <Customize />}
             {enabled ? "Finish Editing" : "Edit"}
           </Btn>
-          {/* <button onClick={() => console.log(query.serialize())}>
-            serialize
-          </button>
-          <button onClick={() => console.log(actions.deserialize())}>
-            deserialize
-          </button> */}
+          <Btn
+            className="transition cursor-pointer bg-yellow-400 ml-2"
+            onClick={() => console.log(query.serialize())}
+          >
+            Log state to console
+          </Btn>
+          <Btn
+            className="transition cursor-pointer bg-yellow-400 ml-2"
+            onClick={() => {
+              try {
+                actions.deserialize(window.prompt("Paste state"));
+              } catch (error) {
+                console.error(error);
+              }
+            }}
+          >
+            Load state
+          </Btn>
         </div>
       </div>
     </HeaderDiv>
