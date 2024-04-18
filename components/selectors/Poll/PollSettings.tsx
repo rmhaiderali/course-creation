@@ -54,6 +54,13 @@ export const PollSettings = () => {
         <ToolbarItem propKey="margin" index={2} type="slider" label="Bottom" />
         <ToolbarItem propKey="margin" index={3} type="slider" label="Left" />
       </ToolbarSection>
+      <ToolbarSection
+        title="Gap"
+        props={["gap"]}
+        summary={({ gap }: any) => `${gap || 0}px`}
+      >
+        <ToolbarItem propKey="gap" index={0} type="slider" label={null} />
+      </ToolbarSection>
       <ToolbarSection title="Decoration">
         <ToolbarItem propKey="buttonStyle" type="radio" label="Style">
           <ToolbarRadio value="full" label="Full" />

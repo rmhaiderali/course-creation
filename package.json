@@ -29,6 +29,7 @@
     "react-dom": "18.2.0",
     "react-froala-wysiwyg": "^4.2.0",
     "react-loading": "2.0.3",
+    "react-quill": "^2.0.0",
     "react-rnd": "10.1.1",
     "react-youtube": "7.9.0",
     "styled-components": "4.4.1"

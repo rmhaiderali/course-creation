@@ -14,7 +14,8 @@ import { ColumnsContainer } from "../../selectors/Container/columnsContainer";
 import { Video } from "../../selectors/Video";
 import { Image } from "../../selectors/Image";
 import { Poll } from "../../selectors/Poll";
-import { FroalaEditor } from "components/selectors/FroalaEditor";
+// import { FroalaEditor } from "components/selectors/FroalaEditor";
+import { ReactQuill } from "components/selectors/ReactQuill";
 
 const ToolboxDiv = styled.div<{ enabled: boolean }>`
   transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
@@ -104,7 +105,7 @@ export const Toolbox = () => {
             </Item>
           </Tooltip>
         </div> */}
-        <div ref={(ref) => create(ref, <FroalaEditor />)}>
+        <div ref={(ref) => create(ref, <ReactQuill />)}>
           <Tooltip title="Text" placement="right">
             <Item className="m-2 pb-2 cursor-pointer block" move>
               <TypeSvg />

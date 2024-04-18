@@ -15,6 +15,7 @@ type ButtonProps = {
   text?: string;
   textComponent?: any;
   options?: string[];
+  gap?: number;
 };
 
 const StyledButton = styled.button<ButtonProps>`
@@ -27,10 +28,17 @@ const StyledButton = styled.button<ButtonProps>`
     props.buttonStyle === "outline"
       ? `rgba(${Object.values(props.background)})`
       : "transparent"};
+  display: flex;
+  align-items: center;
+`;
+
+const Wrapper = styled.div<ButtonProps>`
   margin: ${({ margin }) =>
     `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`};
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  row-gap: ${({ gap }) => gap + "px"};
 `;
 
 export const Poll: UserComponent<ButtonProps> = (props: any) => {
@@ -47,9 +55,10 @@ export const Poll: UserComponent<ButtonProps> = (props: any) => {
 
   const id = useId();
 
-  const { text, textComponent, color, options, ...otherProps } = props;
+  const { text, textComponent, color, options, margin, gap, ...otherProps } =
+    props;
   return (
-    <div ref={connect} style={{ width: "100%" }}>
+    <Wrapper ref={connect} margin={margin} gap={gap}>
       <Text {...textComponent} text={text} />
       {options.map((option, index) => (
         <StyledButton
@@ -135,7 +144,7 @@ export const Poll: UserComponent<ButtonProps> = (props: any) => {
           />
         </StyledButton>
       )}
-    </div>
+    </Wrapper>
   );
 };
 
@@ -152,6 +161,7 @@ Poll.craft = {
       textAlign: "center",
     },
     options: ["Option 1", "Option 2"],
+    gap: 8,
   },
   related: {
     toolbar: PollSettings,

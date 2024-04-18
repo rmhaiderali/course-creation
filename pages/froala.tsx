@@ -93,7 +93,6 @@ function App() {
   return (
     <div>
       <FroalaEditor config={config} />
-      <FroalaEditor config={config} />
     </div>
   );
 }

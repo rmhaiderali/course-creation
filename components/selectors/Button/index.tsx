@@ -61,7 +61,7 @@ Button.craft = {
     color: { r: 30, g: 30, b: 30, a: 1 },
     buttonStyle: "full",
     text: "Button",
-    margin: ["5", "5", "5", "5"],
+    margin: ["0", "0", "0", "0"],
     textComponent: {
       ...Text.craft.props,
       textAlign: "center",

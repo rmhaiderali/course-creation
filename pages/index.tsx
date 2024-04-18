@@ -15,7 +15,7 @@ import { Custom3, Custom3BtnDrop } from "../components/selectors/Custom3";
 import { Video } from "../components/selectors/Video";
 import { Image } from "../components/selectors/Image";
 import { Poll } from "../components/selectors/Poll";
-import { FroalaEditor } from "../components/selectors/FroalaEditor";
+import { ReactQuill } from "../components/selectors/ReactQuill";
 
 const theme = createMuiTheme({
   typography: {
@@ -49,7 +49,7 @@ function App() {
             Video,
             Image,
             Poll,
-            FroalaEditor,
+            ReactQuill,
           }}
           enabled={false}
           onRender={RenderNode}
