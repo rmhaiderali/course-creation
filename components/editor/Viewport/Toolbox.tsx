@@ -3,15 +3,20 @@ import { Tooltip } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components";
 
-import ButtonSvg from "../../../public/icons/toolbox/button.svg";
-import SquareSvg from "../../../public/icons/toolbox/rectangle.svg";
-import TypeSvg from "../../../public/icons/toolbox/text.svg";
-import YoutubeSvg from "../../../public/icons/toolbox/video-line.svg";
+import TextSvg from "../../../public/icons/toolbox2/text.svg";
+import HeadingSvg from "../../../public/icons/toolbox2/heading.svg";
+import RowSvg from "../../../public/icons/toolbox2/row.svg";
+import ColumnSvg from "../../../public/icons/toolbox2/column.svg";
+import PollSvg from "../../../public/icons/toolbox2/poll.svg";
+import QuestionSvg from "../../../public/icons/toolbox2/question.svg";
+import ImageSvg from "../../../public/icons/toolbox2/image.svg";
+import ButtonSvg from "../../../public/icons/toolbox2/button.svg";
+
 import { Button } from "../../selectors/Button";
 import { RowsContainer } from "../../selectors/Container/rowsContainer";
 import { ColumnsContainer } from "../../selectors/Container/columnsContainer";
-// import { Text } from "../../selectors/Text";
-import { Video } from "../../selectors/Video";
+
+// import { Video } from "../../selectors/Video";
 import { Image } from "../../selectors/Image";
 import { Poll } from "../../selectors/Poll";
 // import { FroalaEditor } from "components/selectors/FroalaEditor";
@@ -25,8 +30,8 @@ const ToolboxDiv = styled.div<{ enabled: boolean }>`
 
 const Item = styled.a<{ move?: boolean }>`
   svg {
-    width: 22px;
-    height: 22px;
+    width: 30px;
+    height: 30px;
     fill: #707070;
   }
   ${(props) =>
@@ -52,24 +57,17 @@ export const Toolbox = () => {
       className="toolbox transition w-12 h-full flex flex-col bg-white"
     >
       <div className="flex flex-1 flex-col items-center pt-3">
-        <div
-          ref={(ref) =>
-            create(
-              ref,
-              <Element
-                canvas
-                is={ColumnsContainer}
-                background={{ r: 0, g: 0, b: 0, a: 0.1 }}
-                color={{ r: 0, g: 0, b: 0, a: 1 }}
-                height="300px"
-                width="300px"
-              ></Element>
-            )
-          }
-        >
-          <Tooltip title="Columns Container" placement="right">
+        <div ref={(ref) => create(ref, <ReactQuill />)}>
+          <Tooltip title="Text" placement="right">
             <Item className="m-2 pb-2 cursor-pointer block" move>
-              <SquareSvg />
+              <TextSvg />
+            </Item>
+          </Tooltip>
+        </div>
+        <div ref={(ref) => create(ref, <ReactQuill />)}>
+          <Tooltip title="Heading" placement="right">
+            <Item className="m-2 pb-2 cursor-pointer block" move>
+              <HeadingSvg />
             </Item>
           </Tooltip>
         </div>
@@ -90,25 +88,56 @@ export const Toolbox = () => {
         >
           <Tooltip title="Rows Container" placement="right">
             <Item className="m-2 pb-2 cursor-pointer block" move>
-              <SquareSvg />
+              <RowSvg />
             </Item>
           </Tooltip>
         </div>
-        {/* <div
+        <div
           ref={(ref) =>
-            create(ref, <Text fontSize="12" textAlign="left" text="Hi there" />)
+            create(
+              ref,
+              <Element
+                canvas
+                is={ColumnsContainer}
+                background={{ r: 0, g: 0, b: 0, a: 0.1 }}
+                color={{ r: 0, g: 0, b: 0, a: 1 }}
+                height="300px"
+                width="300px"
+              ></Element>
+            )
           }
         >
-          <Tooltip title="Text" placement="right">
+          <Tooltip title="Columns Container" placement="right">
             <Item className="m-2 pb-2 cursor-pointer block" move>
-              <TypeSvg />
+              <ColumnSvg />
+            </Item>
+          </Tooltip>
+        </div>
+        {/* <div ref={(ref) => create(ref, <Video />)}>
+          <Tooltip title="Video" placement="right">
+            <Item className="m-2 pb-2 cursor-pointer block" move>
+              <YoutubeSvg />
             </Item>
           </Tooltip>
         </div> */}
-        <div ref={(ref) => create(ref, <ReactQuill />)}>
-          <Tooltip title="Text" placement="right">
+        <div ref={(ref) => create(ref, <Poll />)}>
+          <Tooltip title="Poll" placement="right">
             <Item className="m-2 pb-2 cursor-pointer block" move>
-              <TypeSvg />
+              <PollSvg />
+            </Item>
+          </Tooltip>
+        </div>
+        <div ref={(ref) => create(ref, <Poll />)}>
+          <Tooltip title="Question" placement="right">
+            <Item className="m-2 pb-2 cursor-pointer block" move>
+              <QuestionSvg />
+            </Item>
+          </Tooltip>
+        </div>
+        <div ref={(ref) => create(ref, <Image />)}>
+          <Tooltip title="Image" placement="right">
+            <Item className="m-2 pb-2 cursor-pointer block" move>
+              <ImageSvg />
             </Item>
           </Tooltip>
         </div>
@@ -116,27 +145,6 @@ export const Toolbox = () => {
           <Tooltip title="Button" placement="right">
             <Item className="m-2 pb-2 cursor-pointer block" move>
               <ButtonSvg />
-            </Item>
-          </Tooltip>
-        </div>
-        <div ref={(ref) => create(ref, <Video />)}>
-          <Tooltip title="Video" placement="right">
-            <Item className="m-2 pb-2 cursor-pointer block" move>
-              <YoutubeSvg />
-            </Item>
-          </Tooltip>
-        </div>
-        <div ref={(ref) => create(ref, <Image />)}>
-          <Tooltip title="Image" placement="right">
-            <Item className="m-2 pb-2 cursor-pointer block" move>
-              <YoutubeSvg />
-            </Item>
-          </Tooltip>
-        </div>
-        <div ref={(ref) => create(ref, <Poll />)}>
-          <Tooltip title="Poll" placement="right">
-            <Item className="m-2 pb-2 cursor-pointer block" move>
-              <YoutubeSvg />
             </Item>
           </Tooltip>
         </div>

@@ -59,7 +59,7 @@ export const Poll: UserComponent<ButtonProps> = (props: any) => {
     props;
   return (
     <Wrapper ref={connect} margin={margin} gap={gap}>
-      <Text {...textComponent} text={text} />
+      <Text {...textComponent} text={text} margin={[0, 0, 0, 20]} />
       {options.map((option, index) => (
         <StyledButton
           className={cx([
@@ -158,7 +158,6 @@ Poll.craft = {
     margin: ["5", "0", "5", "0"],
     textComponent: {
       ...Text.craft.props,
-      textAlign: "center",
     },
     options: ["Option 1", "Option 2"],
     gap: 8,

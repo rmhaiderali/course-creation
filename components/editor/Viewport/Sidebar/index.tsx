@@ -100,6 +100,20 @@ const CarbonAdsContainer = styled.div`
   }
 `;
 
+const Page = styled.div<any>`
+  width: 100%;
+  height: 34px;
+  display: flex;
+  cursor: pointer;
+  padding-left: 30px;
+  align-items: center;
+  ${(props) => (props.selected ? "color: white;" : "")}
+  ${(props) => (props.selected ? "background-color: #2680eb;" : "")}
+  &:hover {
+    background-color: ${(props) => (props.selected ? "#2680eb" : "#f1f1f1")};
+  }
+`;
+
 const Carbonads = () => {
   // const domRef = React.useRef<HTMLDivElement>(null);
 
@@ -137,10 +151,11 @@ const Carbonads = () => {
   return <></>;
 };
 
-export const Sidebar = () => {
+export const Sidebar = ({ pages, setPages, selectedPage, setSelectedPage }) => {
   const [layersVisible, setLayerVisible] = useState(true);
   const [toolbarVisible, setToolbarVisible] = useState(true);
-  const { enabled } = useEditor((state) => ({
+  const [pagesVisible, setPagesVisible] = useState(true);
+  const { enabled, actions, query } = useEditor((state) => ({
     enabled: state.options.enabled,
   }));
 
@@ -165,6 +180,34 @@ export const Sidebar = () => {
         >
           <div className="">
             <Layers expandRootOnLoad={true} />
+          </div>
+        </SidebarItem>
+        <SidebarItem
+          icon={LayerIcon}
+          title="Pages"
+          height={!pagesVisible ? "full" : "45%"}
+          visible={pagesVisible}
+          onChange={(val) => setPagesVisible(val)}
+        >
+          <div className="">
+            {pages?.map((state, index) => (
+              <Page
+                key={index}
+                selected={selectedPage === index}
+                onClick={() => {
+                  pages[selectedPage] = query.serialize();
+                  setPages([...pages]);
+                  setSelectedPage(index);
+                  try {
+                    actions.deserialize(state);
+                  } catch (error) {
+                    // console.error(error);
+                  }
+                }}
+              >
+                Page {index + 1}
+              </Page>
+            ))}
           </div>
         </SidebarItem>
         <Carbonads />
