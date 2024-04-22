@@ -16,6 +16,7 @@ import { Video } from "../components/selectors/Video";
 import { Image } from "../components/selectors/Image";
 import { Poll } from "../components/selectors/Poll";
 import { ReactQuill } from "../components/selectors/ReactQuill";
+import { ContextProvider } from "../Context";
 
 const theme = createMuiTheme({
   typography: {
@@ -31,45 +32,52 @@ const theme = createMuiTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <div className="h-full h-screen">
-        <Editor
-          resolver={{
-            Container,
-            RowsContainer,
-            ColumnsContainer,
-            Text,
-            Custom1,
-            Custom2,
-            Custom2VideoDrop,
-            Custom3,
-            Custom3BtnDrop,
-            OnlyButtons,
-            Button,
-            Video,
-            Image,
-            Poll,
-            ReactQuill,
-          }}
-          enabled={false}
-          onRender={RenderNode}
-        >
-          <Viewport>
-            <Frame>
-              <Element
-                canvas
-                is={Container}
-                width="800px"
-                height="auto"
-                background={{ r: 255, g: 255, b: 255, a: 1 }}
-                padding={["40", "40", "40", "40"]}
-                custom={{ displayName: "App" }}
-              ></Element>
-            </Frame>
-          </Viewport>
-        </Editor>
-      </div>
-    </ThemeProvider>
+    <ContextProvider>
+      <ThemeProvider theme={theme}>
+        <div className="h-full h-screen">
+          <Editor
+            resolver={{
+              Container,
+              RowsContainer,
+              ColumnsContainer,
+              Text,
+              Custom1,
+              Custom2,
+              Custom2VideoDrop,
+              Custom3,
+              Custom3BtnDrop,
+              OnlyButtons,
+              Button,
+              Video,
+              Image,
+              Poll,
+              ReactQuill,
+            }}
+            enabled={false}
+            onRender={RenderNode}
+          >
+            <Viewport>
+              <Frame>
+                <Element
+                  canvas
+                  is={Container}
+                  width="800px"
+                  height="auto"
+                  background={{ r: 255, g: 255, b: 255, a: 1 }}
+                  padding={["40", "40", "40", "40"]}
+                  custom={{ displayName: "App" }}
+                  customStyles={{
+                    border: "1px solid #D9D9D9",
+                    borderRadius: "4px",
+                  }}
+                  appendNewPageButton={true}
+                ></Element>
+              </Frame>
+            </Viewport>
+          </Editor>
+        </div>
+      </ThemeProvider>
+    </ContextProvider>
   );
 }
 

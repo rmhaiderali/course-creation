@@ -1,6 +1,6 @@
 import { useEditor } from "@craftjs/core";
 import cx from "classnames";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { Header } from "./Header";
 import { Sidebar } from "./Sidebar";
@@ -9,9 +9,6 @@ import { Toolbox } from "./Toolbox";
 export const Viewport: React.FC<{ children?: React.ReactNode }> = ({
   children,
 }) => {
-  const [pages, setPages] = useState(["", "", ""]);
-  const [selectedPage, setSelectedPage] = useState(0);
-
   const {
     enabled,
     connectors,
@@ -64,12 +61,7 @@ export const Viewport: React.FC<{ children?: React.ReactNode }> = ({
             </div>
           </div>
         </div>
-        <Sidebar
-          pages={pages}
-          setPages={setPages}
-          selectedPage={selectedPage}
-          setSelectedPage={setSelectedPage}
-        />
+        <Sidebar />
       </div>
     </div>
   );

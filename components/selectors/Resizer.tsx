@@ -81,7 +81,7 @@ const Indicators = styled.div<{ bound?: "row" | "column" }>`
   }
 `;
 
-export const Resizer = ({ propKey, children, ...props }: any) => {
+export const Resizer = ({ propKey, children, resizeProps, ...props }: any) => {
   const {
     id,
     actions: { setProp },
@@ -181,6 +181,7 @@ export const Resizer = ({ propKey, children, ...props }: any) => {
 
   return (
     <Resizable
+      {...resizeProps}
       enable={[
         "top",
         "left",
