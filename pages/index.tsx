@@ -16,7 +16,7 @@ import { Video } from "../components/selectors/Video";
 import { Image } from "../components/selectors/Image";
 import { Poll } from "../components/selectors/Poll";
 import { ReactQuill } from "../components/selectors/ReactQuill";
-import { ContextProvider } from "../Context";
+import { ContextProvider } from "../components/Context";
 
 const theme = createMuiTheme({
   typography: {

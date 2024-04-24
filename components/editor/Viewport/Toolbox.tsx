@@ -3,14 +3,14 @@ import { Tooltip } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components";
 
-import TextSvg from "../../../public/icons/toolbox2/text.svg";
-import HeadingSvg from "../../../public/icons/toolbox2/heading.svg";
-import RowSvg from "../../../public/icons/toolbox2/row.svg";
-import ColumnSvg from "../../../public/icons/toolbox2/column.svg";
-import PollSvg from "../../../public/icons/toolbox2/poll.svg";
-import QuestionSvg from "../../../public/icons/toolbox2/question.svg";
-import ImageSvg from "../../../public/icons/toolbox2/image.svg";
-import ButtonSvg from "../../../public/icons/toolbox2/button.svg";
+import TextSvg from "../../../public/icons/toolbox/text.svg";
+import HeadingSvg from "../../../public/icons/toolbox/heading.svg";
+import RowSvg from "../../../public/icons/toolbox/row.svg";
+import ColumnSvg from "../../../public/icons/toolbox/column.svg";
+import PollSvg from "../../../public/icons/toolbox/poll.svg";
+import QuestionSvg from "../../../public/icons/toolbox/question.svg";
+import ImageSvg from "../../../public/icons/toolbox/image.svg";
+import ButtonSvg from "../../../public/icons/toolbox/button.svg";
 
 import { Button } from "../../selectors/Button";
 import { RowsContainer } from "../../selectors/Container/rowsContainer";

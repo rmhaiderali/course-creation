@@ -6,8 +6,8 @@ import styled from "styled-components";
 
 import Checkmark from "../../../public/icons/check.svg";
 import Customize from "../../../public/icons/customize.svg";
-import RedoSvg from "../../../public/icons/toolbox/redo.svg";
-import UndoSvg from "../../../public/icons/toolbox/undo.svg";
+import RedoSvg from "../../../public/icons/redo.svg";
+import UndoSvg from "../../../public/icons/undo.svg";
 
 const HeaderDiv = styled.div`
   width: 100%;

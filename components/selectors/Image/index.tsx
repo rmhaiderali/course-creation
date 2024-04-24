@@ -1,7 +1,7 @@
 import { useNode, useEditor } from "@craftjs/core";
 import React from "react";
 import styled from "styled-components";
-import readFile from "../../../utils/readFile";
+import readFile from "../../utils/readFile";
 
 import { ImageSettings } from "./ImageSettings";
 

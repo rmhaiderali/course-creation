@@ -1,9 +1,9 @@
 import { useEditor } from "@craftjs/core";
 import { Layers } from "@craftjs/layers";
 import React, { useState, useContext } from "react";
-import { Context } from "../../../../Context";
+import { Context } from "../../../Context";
 import styled from "styled-components";
-import { defaultPage } from "../../../../utils/constants";
+import { defaultPage } from "../../../utils/constants";
 
 import { SidebarItem } from "./SidebarItem";
 

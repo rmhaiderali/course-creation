@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { Context } from "../../../Context";
+import { Context } from "../../Context";
 import { useEditor } from "@craftjs/core";
 import { ContainerSettings } from "./ContainerSettings";
 import { Resizer } from "../Resizer";
-import { defaultPage } from "../../../utils/constants";
+import { defaultPage } from "../../utils/constants";
 
 export type ContainerProps = {
   background: Record<"r" | "g" | "b" | "a", number>;
